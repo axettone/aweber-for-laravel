@@ -1,0 +1,23 @@
+{
+    "name": "axettone/aweber-for-laravel",
+    "type": "library",
+    "description": "Aweber for Laravel is a PHP library that wraps AWeber APIs and let you connect your Larave",
+    "keywords": ["aweber","marketing automation","laravel"],
+    "license": "MIT",
+    "authors": [{
+        "name": "Paolo Niccolò Giubelli"
+    }],
+    "require": {
+        "aweber/aweber": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "AWeber\\": "src/AWeber"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "AWeber\\Test\\": "test/AWeber"
+        }
+    }
+}
