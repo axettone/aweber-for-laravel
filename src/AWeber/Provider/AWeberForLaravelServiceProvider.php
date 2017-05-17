@@ -1,6 +1,6 @@
 <?php
 
-namespace Axettone\AweberForLaravel;
+namespace Aweber\Provider;
 
 use Illuminate\Support\ServiceProvider;
 
