@@ -72,5 +72,16 @@ return [
     | The ID of your AWeber List
     |
     */
-    'aweber_list_id'             => ''
+    'aweber_list_id'             => '',
+    /*
+    |--------------------------------------------------------------------------
+    | AWeber API Request Rate Limit
+    |--------------------------------------------------------------------------
+    | Don't change this value, unless you know what you're doing.
+    | (Requests per second limit)
+    |
+    */
+    'aweber_list_id'             => '1',
+
+    'aweber_table_prefix'        => 'aweber',
 ];

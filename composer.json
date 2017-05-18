@@ -12,12 +12,13 @@
     },
     "autoload": {
         "psr-4": {
-            "AWeber\\": "src/AWeber"
+            "AWeberForLaravel\\": "src/AWeber",
+            "AWeberForLaravel\\Providers\\": "src/AWeber/Providers"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "AWeber\\Test\\": "test/AWeber"
+            "AWeberForLaravel\\Test\\": "test/AWeber"
         }
     }
 }
