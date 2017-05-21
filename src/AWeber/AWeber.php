@@ -2,7 +2,7 @@
 namespace AWeberForLaravel;
 
 use Illuminate\Support\Collection;
-use AWeber\AWeberAPI;
+use \AWeberAPI;
 
 class AWeber
 {
