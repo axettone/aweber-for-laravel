@@ -7,7 +7,7 @@ return [
     |
     | This is the identifier of your AWeber App
     */
-    'aweber_app_id'              => '',
+    'app_id'              => '',
     /*
     |--------------------------------------------------------------------------
     | App Consumer Key
@@ -15,7 +15,7 @@ return [
     |
     | 
     */
-    'aweber_consumer_key'        => '',
+    'consumer_key'        => '',
     /*
     |--------------------------------------------------------------------------
     | App Consumer Secret
@@ -23,7 +23,7 @@ return [
     |
     | 
     */
-    'aweber_consumer_secret'     => '',
+    'consumer_secret'     => '',
     /*
     |--------------------------------------------------------------------------
     | Access Token
@@ -31,7 +31,7 @@ return [
     |
     | 
     */
-    'aweber_access_token'        => '',
+    'access_token'        => '',
     /*
     |--------------------------------------------------------------------------
     | Access Token Secret
@@ -39,7 +39,7 @@ return [
     |
     |
     */
-    'aweber_access_token_secret' => '',
+    'access_token_secret' => '',
     /*
     |--------------------------------------------------------------------------
     | Access Key
@@ -47,7 +47,7 @@ return [
     |
     |
     */
-    'aweber_access_key'          => '',
+    'access_key'          => '',
     /*
     |--------------------------------------------------------------------------
     | Access Secret
@@ -55,8 +55,8 @@ return [
     |
     |
     */
-    'aweber_access_secret'       => '',
-    'aweber_verifier_code'       => '',
+    'access_secret'       => '',
+    'verifier_code'       => '',
     /*
     |--------------------------------------------------------------------------
     | AWeber Account ID
@@ -64,7 +64,7 @@ return [
     |
     |
     */
-    'aweber_account_id'          => '',
+    'account_id'          => '',
     /*
     |--------------------------------------------------------------------------
     | List ID
@@ -72,7 +72,7 @@ return [
     | The ID of your AWeber List
     |
     */
-    'aweber_list_id'             => '',
+    'list_id'             => '',
     /*
     |--------------------------------------------------------------------------
     | AWeber API Request Rate Limit
@@ -81,7 +81,7 @@ return [
     | (Requests per second limit)
     |
     */
-    'aweber_list_id'             => '1',
+    'list_id'             => '1',
 
-    'aweber_table_prefix'        => 'aweber',
+    'table_prefix'        => 'aweber',
 ];
