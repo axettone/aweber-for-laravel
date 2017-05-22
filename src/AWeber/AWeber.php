@@ -11,6 +11,15 @@ class AWeber
     protected $account_id;
     protected $list_id;
 
+    /**
+     * @param string $method
+     * @param array $attributes
+     */
+    public function __call($method, $arguments)
+    {
+        return call_user_func_array($this->dispatch($method), $arguments);
+    }
+
     public function __construct()
     {
         $this->aweber = new AWeberAPI(
@@ -21,6 +30,20 @@ class AWeber
         $this->account_id = config('aweber.account_id');
         $this->list_id = config('aweber.list_id');
     }
+    /**
+     * @return Callable
+     */
+    public function dispatch($method)
+    {
+        foreach ($this->providers as $provider) {
+            if (method_exists($provider, $method)) {
+                $this->formatters[$formatter] = array($provider, $formatter);
+
+                return $this->formatters[$formatter];
+            }
+        }
+        throw new \InvalidArgumentException(sprintf('Unknown formatter "%s"', $formatter));
+    }
 
     public function getSubscribers($offset = 0, $limit = 100)
     {
@@ -30,7 +53,7 @@ class AWeber
             'ws.size'  => $limit
             ];
         $body = $this->aweber->adapter->request('GET', $url, [], $options);
-        print_f($body);
+        return $body;
     }
     public function addSubscriber(Subscriber $subscriber, $tags = [], $allow_empty = true, $return = 'body')
     {
@@ -56,4 +79,10 @@ class AWeber
         }
         return $body;
     }
+    public function findLists($name)
+    {
+        return $this->aweber->adapter->find(['ws.op'=>'find', 'name'=>$name]);
+    }
+
+    publi
 }
