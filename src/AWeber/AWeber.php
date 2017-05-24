@@ -20,6 +20,10 @@ class AWeber
         return call_user_func_array($this->dispatch($method), $arguments);
     }
 
+    public function accountId()
+    {
+        return $this->account_id;
+    }
     public function __construct()
     {
         $this->aweber = new AWeberAPI(
@@ -84,5 +88,8 @@ class AWeber
         return $this->aweber->adapter->find(['ws.op'=>'find', 'name'=>$name]);
     }
 
-    publi
+    public static function list($name)
+    {
+        return new AWeberList($this, $name);
+    }
 }
