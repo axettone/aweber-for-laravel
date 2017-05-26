@@ -8,10 +8,11 @@ class AWeberList
     protected $name;
     protected $id;
 
-    public function __construct(AWeber $aweber, $name)
+    public function __construct(AWeber $aweber, $name, $id)
     {
         $this->aweber = $aweber;
         $this->name = $name;
+        $this->id = $id;
     }
     public function aweber()
     {
@@ -23,7 +24,7 @@ class AWeberList
     }
     public function subscribers()
     {
-        return new SubscribersList();
+        return new SubscribersList($this);
     }
 
     public function addSubscriber(Subscriber $subscriber)

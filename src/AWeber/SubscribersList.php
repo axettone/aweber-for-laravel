@@ -4,19 +4,19 @@ namespace AWeberForLaravel;
 
 class SubscribersList
 {
-    protected $list;
+    protected $awList;
     protected $query;
     protected $queryParams;
 
-    public function __construct(AWeberList $list)
+    public function __construct(AWeberList $awList)
     {
-        $this->list = $list;
-        $this->query = "";
+        $this->awList = $awList;
+        $this->query = "all";
         $this->queryParams = [];
     }
     protected function aweber()
     {
-        return $this->list->aweber();
+        return $this->awList->aweber();
     }
     public function all()
     {
@@ -51,13 +51,19 @@ class SubscribersList
     protected function _getAll()
     {
         $ret = [];
-        $url = sprintf("https://api.aweber.com/1.0/accounts/%s/lists/%s/subscribers", $this->aweber()->accountId(), $this->list->id());
-        $options = [
-            'ws.start' => 0,
+        $url = sprintf("https://api.aweber.com/1.0/accounts/%s/lists/%s/subscribers", $this->aweber()->accountId(), $this->awList->id());
+        $offset = 0;
+        do {
+            $options = [
+            'ws.start' => $offset,
             'ws.size'  => 100
             ];
-        $body = $this->aweber->adapter->request('GET', $url, [], $options);
-        $ret = array_merge($ret, $body['entries']);
+            $body = $this->aweber()->request('GET', $url, [], $options);
+            $cnt = count($body['entries']);
+            $ret = array_merge($ret, $body['entries']);
+            $offset += $cnt;
+            sleep(1);
+        } while ($cnt==100);
         return $ret;
     }
 

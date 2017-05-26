@@ -67,21 +67,28 @@ return [
     'account_id'          => '',
     /*
     |--------------------------------------------------------------------------
-    | List ID
+    | Lists
     |--------------------------------------------------------------------------
-    | The ID of your AWeber List
+    | A set of AWeber lists, in "name" => "id" format.
+    | You are free to name the lists as you wish, it's just
+    | for better code readability in your program. Id is the
+    | list ID in AWeber.
+    | 
+    | E.g.
+    | 'lists' => [
+    |    'suppliers' => '12345',
+    |    'customers' = '54321'
+    | ],
+    |
+    | Usage:
+    | 
+    | $list = AWeber::list('customers'); // You'll get list with Id 54321
     |
     */
-    'list_id'             => '',
-    /*
-    |--------------------------------------------------------------------------
-    | AWeber API Request Rate Limit
-    |--------------------------------------------------------------------------
-    | Don't change this value, unless you know what you're doing.
-    | (Requests per second limit)
-    |
-    */
-    'list_id'             => '1',
+    'lists'             => [
+        
+    ],
+    
 
     'table_prefix'        => 'aweber',
 ];

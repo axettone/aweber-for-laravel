@@ -9,8 +9,6 @@ class AWeber
     protected $aweber;
     protected $account;
     protected $account_id;
-    protected $list_id;
-
     /**
      * @param string $method
      * @param array $attributes
@@ -32,7 +30,6 @@ class AWeber
         $this->account = $this->aweber->getAccount(config('aweber.access_key'),
             config('aweber.access_secret'));
         $this->account_id = config('aweber.account_id');
-        $this->list_id = config('aweber.list_id');
     }
     /**
      * @return Callable
@@ -49,6 +46,7 @@ class AWeber
         throw new \InvalidArgumentException(sprintf('Unknown formatter "%s"', $formatter));
     }
 
+    /*
     public function getSubscribers($offset = 0, $limit = 100)
     {
         $url = sprintf("https://api.aweber.com/1.0/accounts/%s/lists/%s/subscribers", config('aweber.account_id'), config('aweber.list_id'));
@@ -83,13 +81,26 @@ class AWeber
         }
         return $body;
     }
+    */
     public function findLists($name)
     {
         return $this->aweber->adapter->find(['ws.op'=>'find', 'name'=>$name]);
     }
 
-    public static function list($name)
+    public static function getList($name)
     {
-        return new AWeberList($this, $name);
+        $lists = config('aweber.lists');
+        if (!is_array($lists)) {
+            throw new RunTimeException("AWeber config error: lists is not an array");
+        }
+        if (!array_key_exists($name, $lists)) {
+            throw new RunTimeException("AWeber config error: list $name is not declared in config file");
+        }
+        $aweber = new AWeber();
+        return new AWeberList($aweber, $name, $lists[$name]);
+    }
+    public function request($method, $url, array $args, array $options)
+    {
+        return $this->aweber->adapter->request($method, $url, $args, $options);
     }
 }
