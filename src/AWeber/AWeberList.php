@@ -26,12 +26,19 @@ class AWeberList
     {
         return new SubscribersList($this);
     }
-
+    public function customFields()
+    {
+        return new CustomFieldCollection($this);
+    }
     public function addSubscriber(Subscriber $subscriber)
     {
     }
 
     public function removeSubscriber(Subscriber $subscriber)
     {
+    }
+    public function campaigns()
+    {
+        return new CampaignsCollection($this);
     }
 }
