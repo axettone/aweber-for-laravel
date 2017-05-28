@@ -99,8 +99,8 @@ class AWeber
         $aweber = new AWeber();
         return new AWeberList($aweber, $name, $lists[$name]);
     }
-    public function request($method, $url, array $args, array $options)
+    public function request($method, $url, array $data)
     {
-        return $this->aweber->adapter->request($method, $url, $args, $options);
+        return $this->aweber->adapter->request($method, $url, $data);
     }
 }
