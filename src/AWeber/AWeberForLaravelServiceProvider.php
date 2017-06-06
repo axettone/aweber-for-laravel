@@ -3,6 +3,7 @@
 namespace AWeberForLaravel;
 
 use Illuminate\Support\ServiceProvider;
+use AWeberForLaravel\Console\GenerateTokenCommand;
 
 class AWeberForLaravelServiceProvider extends ServiceProvider
 {
@@ -14,5 +15,8 @@ class AWeberForLaravelServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(__DIR__.'/../config/aweber.php', 'aweber');
+        $this->commands([
+            GenerateTokenCommand::class,
+        ]);
     }
 }

@@ -13,7 +13,8 @@
     "autoload": {
         "psr-4": {
             "AWeberForLaravel\\": "src/AWeber",
-            "AWeberForLaravel\\Providers\\": "src/AWeber/Providers"
+            "AWeberForLaravel\\Providers\\": "src/AWeber/Providers",
+            //"AWeberForLaravel\\Console\\": "src/Console"
         }
     },
     "autoload-dev": {

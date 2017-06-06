@@ -39,14 +39,16 @@ class CampaignsCollection
     {
         $ret = [];
         $url = sprintf("https://api.aweber.com/1.0/accounts/%s/lists/%s/campaigns", $this->aweber()->accountId(), $this->awList->id());
+        printf("%s\n", $url);
         $offset = 0;
         do {
             $subRet = [];
             $options = [
-            'ws.start' => $offset,
-            'ws.size'  => 100
+                'ws.start' => $offset,
+                'ws.size'  => 100
             ];
             $body = $this->aweber()->request('GET', $url, $options);
+            print_r($body);
             $cnt = count($body['entries']);
             //$ret = array_merge($ret, $body['entries']);
             foreach ($body['entries'] as $entry) {
